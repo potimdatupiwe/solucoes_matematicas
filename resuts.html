@@ -1,0 +1,32 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>POLINOMIO</title>
+    <script type="text/javascript" id="MathJax-script" async
+    src="https://cdn.jsdelivr.net/npm/mathjax@3.0.0/es5/tex-mml-chtml.js">
+  </script>
+</head>
+
+<body>
+    <p>As raizes do polinomio:</p>
+    <p style="margin-right: 100%;">$${{p}}$$</p>
+    <p style="margin-right: 100%;">São: <br>{% for i in r %}
+      
+      {% if i.imag == 0 %}
+        $$ x_{ {{forloop.counter}} }= {{i.real}} $$
+        <br>
+      {% elif i.real == 0 %}
+        $$ x_{ {{forloop.counter}} }= {{i.imag}}j$$
+        <br>
+      {% else %}
+      $$ x_{ {{forloop.counter}} } = {{i}}$$
+      {% endif %}
+    {% endfor %}</p>
+    
+ <img src="{% static 'imagens/pol.png' %}">
+</body>
+</html>

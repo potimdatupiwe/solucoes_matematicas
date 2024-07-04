@@ -1,0 +1,41 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script type="text/javascript"
+  src="http://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+<link rel="stylesheet" href="{% static 'style.css' %}">
+<nav class="navbarbg-body-tertiary">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="{% url 'polinomio2' %}">
+        <img src="https://cdn.pixabay.com/photo/2012/04/13/00/21/plus-31216_640.png" alt="Logo" width="30" height="24" class="d-inline-block align-text-top">
+        SolucoesMatematicas
+      </a>
+    </div>
+  </nav>
+</head>
+<body>
+    <form action="{% url 'number' %}" method="post">{% csrf_token %}
+        {% if verificacao %}
+            <input name="numero" value="{{valor}}" placeholder="{{valor}}">
+        {% else %}
+            <input name="numero">
+        {% endif %}
+        <input type="submit" name="Enviar">
+
+    {% if verificacao2 %}
+        <p>A Fatoração do Numero <div style="margin-right: 100%;"> $$ {{N}} $$</div> é <div style="margin-right: 100%;"> $$ {{fat}} $$</div></p>
+        {% if isprimebool %}
+            <p>O numero <div style="margin-right: 100%;"> $$ {{N}} $$</div> é  primo</p>
+        {% else %}
+        <p>O numero <div style="margin-right: 100%;"> $$ {{N}} $$</div> é não  primo</p>
+        {% endif %}
+    {% endif %}
+    {{k}}
+</form>
+</body>
+</html>

@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script type="text/javascript"
+  src="http://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+</head>
+<body>
+    <form action="{% url 'equacaodio' %}" method="post">{% csrf_token %}
+      {% if verificacao %}
+        <input name="equadio" value="{{valor}}" placeholder="{{valor}}">
+      {% else %}
+        <input name="equadio">
+      {% endif %}
+    <input type="submit" name="Enviar">
+    {% if verificacao2 %}
+      <p>As soluções para a equação diofantina <div style="margin-right: 100%;">$$ {{equadiof}} $$</div> são:</p>
+      <p style="margin-right: 100%;">$$ {{ lista.0 }} = {{ resul.0 }} $$</p>
+      <p style="margin-right: 100%;">$$ {{ lista.1 }} = {{ resul.1 }} $$</p>
+      <div style="margin-right: 100%;">$$ k \in \mathbb{Z} $$</div>
+    {% endif %}
+</form>
+</body>
+</html>

@@ -1,0 +1,30 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <nav class="navbarbg-body-tertiary">
+        <div class="container-fluid">
+          <a class="navbar-brand" href="{% url 'polinomio2' %}">
+            <img src="https://cdn.pixabay.com/photo/2012/04/13/00/21/plus-31216_640.png" alt="Logo" width="30" height="24" class="d-inline-block align-text-top">
+            SolucoesMatematicas
+          </a>
+        </div>
+      </nav>
+</head>
+<body>
+    <form action="{% url 'historic' %}" method="post">{% csrf_token %}
+    {% for i in lista_question %}
+        <button type="submit" value="{{i.value}}" name="question">{{i.value}}</button><button type="submit" name="x{{forloop.counter0}}">x</button>
+        <br>
+    {% endfor %}
+    {% if verificacao %}
+        <p>Faça o login para visualizar o historico dos problemas</p>
+    {% endif %}
+    {% if verificacao2 %}
+        <p>Seu histórico de problemas está vazio</p>
+    {% endif %}
+</body>
+</html>

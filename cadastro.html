@@ -1,0 +1,27 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <nav class="navbarbg-body-tertiary">
+        <div class="container-fluid">
+          <a class="navbar-brand" href="{% url 'polinomio2' %}">
+            <img src="https://cdn.pixabay.com/photo/2012/04/13/00/21/plus-31216_640.png" alt="Logo" width="30" height="24" class="d-inline-block align-text-top">
+            SolucoesMatematicas
+          </a>
+        </div>
+      </nav>
+</head>
+<body>
+    <form action="{% url 'cadastro' %}" method="post">{% csrf_token %}
+        <input name="usuario">
+        <input type="password" name="senha">
+        <button type="submit" value="Enviar">Enviar</button>
+        {% if user_exist %}
+        <p>O usuario escolhido já existe</p>
+        {% endif %}
+    </form>
+</body>
+</html>
